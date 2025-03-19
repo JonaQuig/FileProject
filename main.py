@@ -4,6 +4,7 @@ YELLOW = "\033[93m"
 BLUE = "\033[34m"
 CYAN = "\033[36m"
 RESET = "\033[0m"
+
 def manage_text_file(file_path):
     while True:  # Start File add/delete loop
         try:
