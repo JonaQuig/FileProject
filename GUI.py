@@ -15,7 +15,7 @@ director_var = tk.StringVar()
 # print them on the screen
 def submit():
     name = name_var.get()
-    director = director_var.get()
+    director = director_var.get()grqwgq
     print("Movie: " + name)
     print("Director: " + director)ddd
     name_var.set("")
