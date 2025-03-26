@@ -17,7 +17,7 @@ def submit():
     name = name_var.get()
     director = director_var.get()
     print("Movie: " + name)
-    print("Director: " + director)
+    print("Director: " + director)ddd
     name_var.set("")
     director_var.set("")
 
