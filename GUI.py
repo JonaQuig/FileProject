@@ -29,9 +29,6 @@ director_label = tk.Label(window, text='Director', font=('calibre', 10, 'bold'))
 director_entry = tk.Entry(window, textvariable=director_var, font=('calibre', 10, 'normal'))
 sub_btn = tk.Button(window, text='Submit', command=submit)
 content = tk.Label(window, text='Content', font=('calibre', 10, 'bold'))
-info_listbox = tk.Listbox(window)
-info_listbox.pack()
-
 
 # Grid placement
 movie_label.grid(row=0, column=0)
@@ -40,12 +37,6 @@ director_label.grid(row=1, column=0)
 director_entry.grid(row=1, column=1)
 sub_btn.grid(row=2, column=1)
 content.grid(row=4, column=0)
-sub_btn.pack(side = BOTTOM)
-info_listbox.insert(tk.END, 'name')
-info_listbox.insert(tk.END, 'director')
-
-customer_textbox = tk.Text(window, height=10, width=40)
-customer_textbox.pack()
 
 # Call mainloop
 window.mainloop()
