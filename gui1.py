@@ -73,6 +73,8 @@ def new_opened_window(selected_option):
     window_entry.place(x=10, y=50)
     delete_entry = Entry(new_window, width=28)
     delete_entry.place(x=260, y=50)
+    search_entry = Entry(new_window, width=28)
+    search_entry.place(x=260, y=115)
 
     file_name_window = f"{selected_option}.txt" #create .txt file if not already there
     try:
@@ -90,8 +92,9 @@ def new_opened_window(selected_option):
             return []
 
     labels = load_labels()
-    y_position = 100
+
     for label_text in labels:
+        global y_position
         hidden_label = Label(new_window, text=label_text)
         hidden_label.place(x=10, y=y_position)
         label_objects.append(hidden_label)
@@ -126,10 +129,37 @@ def new_opened_window(selected_option):
                     file.write(label['text'] + '\n')
         delete_entry.delete(0, END)
 
+    def search_label():
+        search_text = search_entry.get()
+        if search_text:
+            found_label = None
+            for label in label_objects:
+                if search_text in label['text']: # check if the search_text even if a substring
+                    found_label = label          # is in the labels text
+                    break
+            if found_label:
+                label_objects.remove(found_label)
+                label_objects.insert(0, found_label) # insert found label into first position
+             #update display                                # of label_objects
+            y_position = 100
+            for label in label_objects:
+                label.place(x=10, y = y_position)
+                y_position += 20
+
+            with open(file_name_window, 'w') as file:
+                for label in label_objects:
+                    file.write(label['text'] + '\n')
+        search_entry.delete(0, END)
+
+
+
     hid_add_button = Button(new_window, text='Add', command=add_hidden_label)
     hid_add_button.place(x=10, y =75)
 
     label_del_button = Button(new_window, text='Delete', command=delete_label)
     label_del_button.place(x=260, y =75)
+
+    search_button = Button(new_window, text='Search', command=search_label)
+    search_button.place(x=260, y=140)
 
 root.mainloop()
